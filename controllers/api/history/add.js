@@ -11,8 +11,13 @@ module.exports = async (req, res) => {
     date,
     title,
     money,
-    status
+    status,
   })
-  const historySaved = await newHistory.save()
-  res.json(historySaved)
+
+  try {
+    const historySaved = await newHistory.save()
+    res.json(historySaved)
+  } catch (error) {
+    console.log(error)
+  }
 }

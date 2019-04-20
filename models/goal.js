@@ -9,7 +9,7 @@ const goalSchema = new Schema({
   },
   title: String,
   duration: String,
-  Milestone: String,
+  milestone: String,
   isCompoleted: Boolean,
 })
 

@@ -3,15 +3,17 @@ const passport = require('passport')
 require.main.require('./config/passport')
 
 // @Import routes
-const test = require('./api/test')
-const auth = require('./api/auth')
-const history = require('./api/history')
+const Test = require('./api/test')
+const Auth = require('./api/auth')
+const History = require('./api/history')
+const Goal = require('./api/goal')
 
 // @Manager Group Routes
 module.exports = app => {
-  renderRoutesPublic('/', auth)
-  renderRoutes('/', test)
-  renderRoutes('/history', history)
+  renderRoutesPublic('/', Auth)
+  renderRoutes('/', Test)
+  renderRoutes('/history', History)
+  renderRoutes('/goal', Goal)
   /**
    *
    * @Function render routes
