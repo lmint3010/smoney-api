@@ -12,7 +12,7 @@ module.exports = {
   createdToken(user) {
     const { _id, name, email, userName } = user
     const payload = { _id, name, email, userName }
-    return jwt.sign(payload, secret)
+    return jwt.sign(payload, SECRET)
   },
   checkTokenExpire({ iat }) {
     // console.log(iat)

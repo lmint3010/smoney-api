@@ -12,7 +12,7 @@ module.exports = (req, res) => {
 
   try {
     historyModel
-      .find({ user: _id, status: 0 })
+      .find({ user: _id, status: 1 })
       .skip(perPage * page - perPage)
       .limit(perPage)
       .exec(function(err, rs) {
