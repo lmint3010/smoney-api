@@ -1,12 +1,17 @@
 const { ROOT_URL_API } = require.main.require('./config')
-const auth = require('./api/auth')
 const passport = require('passport')
 require.main.require('./config/passport')
-const test = require('./api/test')
 
+// @Import routes
+const test = require('./api/test')
+const auth = require('./api/auth')
+const history = require('./api/history')
+
+// @Manager Group Routes
 module.exports = app => {
   renderRoutesPublic('/', auth)
   renderRoutes('/', test)
+  renderRoutes('/history', history)
   /**
    *
    * @Function render routes

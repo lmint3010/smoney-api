@@ -18,9 +18,9 @@ app.use(urlencoded({ extended: false }))
 app.use(bodyParserJson())
 
 // Routes
-require('./utils/status')(app)
 require('./routes')(app)
 
 app.listen(port, () => {
-  app.get('/', (_, res) => res.send(`Server is running on ${port}`))
+  console.log(`Server is running on ${port}`)
+  require('./utils/status')(app)
 })

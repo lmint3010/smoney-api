@@ -10,6 +10,7 @@ const historySchema = new Schema({
   date: String,
   title: String,
   money: String,
+  status: Boolean
 })
 
 module.exports = model(modelName, historySchema, modelName)
