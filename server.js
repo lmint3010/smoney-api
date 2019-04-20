@@ -18,8 +18,8 @@ app.use(urlencoded({ extended: false }))
 app.use(bodyParserJson())
 
 // Routes
-const testApi = require('./routes/api/test.api')
-app.use('/api/test', testApi)
+require('./utils/status')(app)
+require('./routes')(app)
 
 app.listen(port, () => {
   app.get('/', (_, res) => res.send(`Server is running on ${port}`))
