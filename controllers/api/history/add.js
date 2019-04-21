@@ -18,6 +18,6 @@ module.exports = async (req, res) => {
     const historySaved = await newHistory.save()
     res.json(historySaved)
   } catch (error) {
-    console.log(error)
+    res.status(400).json({ status: 'false' })
   }
 }

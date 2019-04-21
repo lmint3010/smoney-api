@@ -7,6 +7,6 @@ module.exports = async (req, res) => {
     await goalSchema.findOneAndRemove({ _id: id })
     res.json({ status: 'success' })
   } catch (error) {
-    console.log(error)
+    res.status(400).json({ status: 'false' })
   }
 }

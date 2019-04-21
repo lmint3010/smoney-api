@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
   })
 
   try {
-    const goalSaved = newGoal.save()
+    const goalSaved = await newGoal.save()
     res.json(goalSaved)
   } catch (error) {
-    console.log(error)
+    res.status(400).json({ status: 'false' })
   }
 }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const option = { useNewUrlParser: true }
+const option = { useNewUrlParser: true, useFindAndModify: false }
 
 const mongooseConfig = URI => {
   mongoose.connect(URI, option)

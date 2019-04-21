@@ -2,17 +2,24 @@ const goalSchema = require.main.require('./models/goal')
 
 module.exports = (req, res) => {
   const { _id } = req.user
-  const { page } = req.query
+  const { page, isCompoleted } = req.query
   let currentPage = 1
   const perPage = 50
+  const compoleted = {}
 
   if (page) {
     currentPage = page
   }
 
+  if (isCompoleted === '0' || isCompoleted === '1') {
+    console.log(isCompoleted)
+
+    compoleted.isCompoleted = isCompoleted
+  }
+
   try {
     goalSchema
-      .find({ user: _id, status: 0 })
+      .find({ user: _id, ...compoleted })
       .skip(perPage * page - perPage)
       .limit(perPage)
       .exec(function(err, rs) {
@@ -22,12 +29,12 @@ module.exports = (req, res) => {
             data: rs,
             page: currentPage,
             totalPage: Math.ceil(count / perPage),
-            limit: perPage
+            limit: perPage,
           }
           return err ? res.status(500).json(err) : res.json(result)
         })
       })
   } catch (error) {
-    console.log(error)
+    res.status(400).json({ status: 'false' })
   }
 }
